@@ -126,7 +126,9 @@ You can use the `-b` flag to create the new branch and switch to it at the same 
 ```
 $ git merge [branch]
 ```
-To merge branches, you will checkout to the branch that you want to add the modifications. For example, now that I am done with the `test` branch, I want to merge it with the master branch. So I have to run `git checkout master` and the run `git merge test`. This will merge what is in the `test` branch with the `master` branch.
+To merge branches, you will checkout to the branch that you want to add the modifications. For example, now that I am done with the `test` branch, I want to merge it with the `master` branch. So I have to run `git checkout master` and then run `git merge test`. This will merge what is in the `test` branch with the `master` branch.
+But this command can create a conflict problem. The conflict will happen when the same file was changed in different branches. For example, I made changes in the file `main.cpp` in the `test` branch. Then, I went back to the `master branch` and made more changes there, in the same `main.cpp` file. When you try to merge it, you will get an error message. To solve this problem you have to open the file that had the conflict and manually merge the different lines of code. The lines between `<<<<<<< HEAD` and `=======` are from the `master` branch, while the lines between `=======` and `>>>>>>> test` are from the `test` branch.
+
 
 ```
 $ git branch -d [branch-name]
@@ -152,11 +154,6 @@ The `git diff` command is used to see the difference between commits, branches, 
 
 #####SYNCHRONIZE CHANGES
 Keep your local repository and your project on GitHub the same.
-
-```
-$ git merge [bookmark]/[branch]
-```
-
 
 ```
 $ git push
